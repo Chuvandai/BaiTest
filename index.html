@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>GigaFile 風ヒーロー | 静的デモ</title>
+	<link rel="icon" href="favicon.ico" />
+	<link rel="stylesheet" href="index.css" />
+</head>
+<body>
+	<!-- 上部の極細メニュー -->
+	<nav class="topnav">
+		<div class="topnav__inner">
+			<span class="brand"><img class="brand__img" src="gh_logo_new.png" alt="GigaFile" /></span>
+			<span class="notice">YouTubeで【GiFiレコーズラジオ】配信中！</span>
+			<a href="#" class="post-btn">✖ ポスト</a>
+			<ul class="menu">
+				<li><a href="#">ホーム</a></li>
+				<li><a href="#">お知らせ</a></li>
+				<li><a href="#">ギガファイルとは</a></li>
+				<li><a href="#">お問合せ</a></li>
+				<li><a href="#">アプリ</a></li>
+				<li><a href="#">使い方</a></li>
+				<li><a href="#">速度比較</a></li>
+			</ul>
+		</div>
+	</nav>
+
+
+
+
+	<!-- コンテンツ幅 1188px に固定し中央寄せ -->
+	<main class="container">
+		<section class="hero">
+      <div>
+        <a class="mast" href="./" title="GigaFile">
+        </a>
+      </div>
+			<div class="hero__left">
+				<div class="hero__panel">
+					<h1 class="logo">GigaFile（ギガファイル）便</h1>
+					<h2 class="sub">GigaFile（ギガファイル）便とは</h2>
+					<p class="desc">
+						いますぐ利用できるユーザー登録不要の簡単無料大容量のファイル
+						転送サービスです。容量無制限（1ファイル300Gまで）のファイル
+						転送が行えます。ファイルはアップロード後最大100日間保持されます。
+					</p>
+				</div>
+			</div>
+			<div class="hero__right">
+				<img src="4.png" alt="ヒーロー画像" />
+        
+			</div>
+		</section>
+
+		<!-- 上部に200pxの余白（たまに広告表示） -->
+		<div class="gap-ad" id="gap-ad"></div>
+
+		<!-- アップロードカード（見た目のみの静的UI） -->
+		<section class="upload-card">
+            <div class="uc__head">
+                <h3 id="reset-upload" style="cursor:pointer; color: #000; ">アップロード</h3>
+                <ul class="uc__icons">
+                    <li id="open-mail" style="cursor:pointer" title="メール">✉️</li>
+                    <li id="open-setting" style="cursor:pointer" title="設定">⚙️</li>
+                    <li><a href="https://gigafile.ltd/gigafile-howto/" target="_blank" rel="noopener noreferrer" title="お知らせ">🔔</a></li>
+                    <li class="how"><a href="https://gigafile.ltd/gigafile-howto/" target="_blank" rel="noopener noreferrer">使い方</a></li>
+                </ul>
+			</div>
+			<div id="upload-body">
+			<div class="uc__player">
+				<iframe class="uc__iframe" src="https://www.youtube.com/embed/WskL7qpmH20?controls=1&rel=0&modestbranding=1" title="GiFi radio" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+			</div>
+			<div class="uc__days">
+				<span id="retention-text" style="cursor: pointer;">保持期限変更</span>
+				<ul id="days-list">
+					<div class="days-hl" id="days-highlight"><span class="days-hl-label" id="days-hl-label"></span></div>
+					<li>3日</li>
+					<li class="on">5日</li>
+					<li>7日</li>
+					<li>14日</li>
+					<li>30日</li>
+					<li>60日</li>
+					<li>100日</li>
+				</ul>
+			</div>
+			<div class="uc__drop">
+				ただ今、アップロード準備中です。ここにファイルをドラッグ＆ドロップしてください。<br />
+				1ファイル300Gまで、保持期間は最大100日。
+			</div>
+			<div class="uc__zip">
+				<div class="row">
+					<label>ファイル名：</label>
+					<input class="ip" type="text" />
+					<span class="ext">.zip</span>
+				</div>
+				<div class="row">
+					<label>ダウンロードパスワード：</label>
+					<input class="ip s" type="text" />
+					<button class="btn primary">まとめる</button>
+				</div>
+				<div class="row">
+					<input class="ip w" type="text" placeholder="「まとめる」ボタンを押してください。" />
+				</div>
+			</div>
+			<div class="uc__actions">
+				<button class="btn">ファイルを選択</button>
+				<button class="btn">中止</button>
+			</div>
+			<p class="uc__note">※ファイル選択後アップロードは即実施されます。</p>
+			</div>
+			<!-- メールパネル（このセクション内で表示） -->
+			<div id="mail-panel" class="mail-panel">
+				<div class="mail-header">
+					<h3>メールアドレスの入力前に必ず以下をご一読ください。</h3>
+					<button id="close-mail" class="modal-close" aria-label="close">×</button>
+				</div>
+				<p>各種メール通知機能は、<a href="#">利用規約・プライバシーポリシー</a>に同意し、ご自身が所有されるアドレスにてご利用して頂くことになります。</p>
+				<ul class="mail-links">
+					<li><a href="#">ギガファイル便とは</a></li>
+					<li><a href="#">利用規約・プライバシーポリシー</a></li>
+					<li><a href="#">【マニュアル】アップロード情報を第三者に送信する</a></li>
+				</ul>
+				<label class="mail-approval"><input type="checkbox" id="mail-approve"> 両方の規約に同意し、自分のメールアドレスを入力する</label>
+				<div class="mail-actions">
+					<input type="email" id="mail-input" placeholder="sample@gigafile.nu" disabled>
+					<button id="mail-continue" disabled>続ける</button>
+				</div>
+			</div>
+
+			<!-- 設定パネル（セクション内で表示） -->
+			<div id="setting-panel" class="mail-panel">
+				<div class="mail-header">
+					<h3>認定ファイル申請</h3>
+					<button id="close-setting" class="modal-close" aria-label="close">×</button>
+				</div>
+				<p>ファイルのアップロード者がファイルの著作権保有者である場合、認定ファイル申請を行うことができます。</p>
+				<p style="text-align:center;">
+					<button class="btn primary" style="min-width: 260px; height: 40px; background-color: #4CAF50; border-color: #4CAF50;" onclick="window.open('https://gigafile.ltd/gigafile-howto/', '_blank', 'noopener,noreferrer')">認定ファイル申請を行う</button>
+				</p>
+				<p>認定ファイル申請を行い、ギガファイル便スタッフにより申請が受理されるとダウンロードページに認定バッジ「✔」と申請した企業名が表示され「違法ファイル通報」ボタンが非表示になります。これにより、第三者からの通報によるファイルの削除を防ぐことができます。予めファイルを大量に頒布する予定がある場合は、是非認定ファイル申請機能をご利用ください。</p>
+			</div>
+		</section>
+
+		<!-- Right-side clickable card ad below the upload section -->
+		<div class="ad-right">
+			<a href="https://sb-nice.discover-news.tokyo/ab/PwRvNXxADycOIvXXw?uq_uid=19a81a37-d546-4006-a033-9f1f66217584&ustad_sess_id=3da151ca-b3dc-4a3d-a58a-3f7c10781395_20251017" target="_blank" rel="noopener noreferrer" class="ad-right__link">
+				<img src="6.webp" alt="Sponsored" class="ad-right__img" />
+				<p class="ad-right__caption">「もうレーザーいらない」 長年のシミが3日でポロ</p>
+			</a>
+		</div>
+
+		<!-- News section -->
+		<section class="news">
+			<h3 class="news__title">新着情報</h3>
+			<ul class="news__list">
+				<li>
+					<span class="news__date">2025/08/15</span>
+					<a href="#" class="news__link">【知りたくなったら、ここに来い】新サービス開始</a>
+				</li>
+				<li>
+					<span class="news__date">2025/08/03</span>
+					<a href="#" class="news__link">輝きたいきもち は、 まだここにある</a>
+				</li>
+			</ul>
+		</section>
+
+		<!-- YouTube info section -->
+		<section class="yt-section">
+			<h3 class="yt-title">【GiFiレコーズラジオ】作業用BGM配信中</h3>
+			<div class="yt-player">
+				<iframe src="https://www.youtube.com/embed/WskL7qpmH20?controls=1&rel=0&modestbranding=1" title="GiFi Records" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+			</div>
+			<div class="yt-text">
+				<p>ギガファイル便公式YouTubeチャンネルにて、作業用BGMを24時間365日配信する企画「GiFiレコーズラジオ」を生配信中です。</p>
+				<p>ファイル転送中の箸休めに、ごゆるりとお楽しみください。</p>
+				<p>ギガファイル便では、作業用BGMのほか、使い方やよくある質問などを動画にまとめて公開しております。<br>↓チャンネル登録よろしくお願いいたします</p>
+			</div>
+      <footer class="footer">
+        <div class="footer__inner">
+          <ul>
+            <li><a href="#">利用規約・プライバシーポリシー</a></li>
+            <li><a href="#">運営会社</a></li>
+            <li><a href="#">ブログ</a></li>
+          </ul>
+          <p>© GigaFile便. ChuVanDai</p>
+        </div>
+      </footer>
+		</section>
+	</main>
+
+	<script>
+	// Ad in the 200px gap (clickable banner)
+	(function() {
+	  var slot = document.getElementById('gap-ad');
+	  if (!slot) return;
+	  // Always show; change to < 0.35 for 35% chance
+	  if (Math.random() < 1) {
+	    var box = document.createElement('div');
+	    box.className = 'gap-ad__inner';
+	    var frame = document.createElement('div');
+	    frame.className = 'gap-ad__frame';
+	    var a = document.createElement('a');
+	    a.href = 'https://sb-nice.discover-news.tokyo/ab/PwRvNXxADycOIvXXw?uq_uid=19a81a37-d546-4006-a033-9f1f66217584&ustad_sess_id=3da151ca-b3dc-4a3d-a58a-3f7c10781395_20251017';
+	    a.target = '_blank';
+	    a.rel = 'noopener noreferrer';
+	    a.title = 'Sponsored';
+    var img = document.createElement('img');
+    img.src = '5.jpg';
+	    img.alt = 'Sponsored banner';
+	    a.appendChild(img);
+	    frame.appendChild(a);
+	    box.appendChild(frame);
+	    var closeBtn = document.createElement('button');
+	    closeBtn.className = 'gap-ad__close';
+	    closeBtn.textContent = '×';
+	    closeBtn.onclick = function() { slot.innerHTML = ''; };
+	    box.appendChild(closeBtn);
+	    slot.appendChild(box);
+	  }
+	})();
+
+// Move highlight under selected day
+(function() {
+  var list = document.getElementById('days-list');
+  if (!list) return;
+  var hl = document.getElementById('days-highlight');
+  function moveTo(el) {
+    var rect = el.getBoundingClientRect();
+    var parentRect = list.getBoundingClientRect();
+    hl.style.width = rect.width + 'px';
+    hl.style.left = (rect.left - parentRect.left) + 'px';
+    // move label and set text
+    var label = document.getElementById('days-hl-label');
+    var text = el.querySelector('span') ? el.querySelector('span').textContent : el.textContent.trim();
+    label.textContent = text;
+  }
+  // Init to the .on element or first
+  var current = list.querySelector('.on') || list.querySelector('li');
+  if (current) moveTo(current);
+  list.addEventListener('click', function(e) {
+    var li = e.target.closest('li');
+    if (!li || !list.contains(li)) return;
+    list.querySelectorAll('li').forEach(function(n){ n.classList.remove('on'); });
+    li.classList.add('on');
+    moveTo(li);
+  });
+  window.addEventListener('resize', function(){ if (current) moveTo(list.querySelector('.on') || current); });
+})();
+
+// Mail panel interactions in-section
+(function(){
+  var openBtn = document.getElementById('open-mail');
+  var panel = document.getElementById('mail-panel');
+  var openSetting = document.getElementById('open-setting');
+  var settingPanel = document.getElementById('setting-panel');
+  var closeBtn = document.getElementById('close-mail');
+  var closeSetting = document.getElementById('close-setting');
+  var reset = document.getElementById('reset-upload');
+  var approve = document.getElementById('mail-approve');
+  var email = document.getElementById('mail-input');
+  var cont = document.getElementById('mail-continue');
+  var uploadBody = document.getElementById('upload-body');
+  function open(){
+    if (uploadBody) uploadBody.style.display = 'none';
+    if (panel) panel.style.display = 'block';
+    if (settingPanel) settingPanel.style.display = 'none';
+  }
+  function close(){
+    if (panel) panel.style.display = 'none';
+    if (settingPanel) settingPanel.style.display = 'none';
+    if (uploadBody) uploadBody.style.display = '';
+  }
+  if (openBtn){ openBtn.addEventListener('click', open); }
+  if (closeBtn){ closeBtn.addEventListener('click', close); }
+  if (openSetting){ openSetting.addEventListener('click', function(){
+    if (uploadBody) uploadBody.style.display = 'none';
+    if (panel) panel.style.display = 'none';
+    if (settingPanel) settingPanel.style.display = 'block';
+  }); }
+  if (closeSetting){ closeSetting.addEventListener('click', close); }
+  if (approve){ approve.addEventListener('change', function(){ var ok = approve.checked; email.disabled = !ok; cont.disabled = !ok; }); }
+  if (reset){ reset.addEventListener('click', function(){
+    if (panel) panel.style.display = 'none';
+    if (settingPanel) settingPanel.style.display = 'none';
+    if (uploadBody) uploadBody.style.display = '';
+  }); }
+	})();
+
+// Retention text animation
+(function() {
+	var retentionText = document.getElementById('retention-text');
+	var isAnimating = false;
+	
+	function startAnimation() {
+		if (isAnimating) return;
+		isAnimating = true;
+		
+		var originalText = retentionText.textContent;
+		var animationText = '保持期限変更';
+		var currentIndex = 0;
+		var direction = 1; // 1 for forward, -1 for backward
+		
+		function animate() {
+			if (currentIndex >= animationText.length && direction === 1) {
+				direction = -1;
+			} else if (currentIndex <= 0 && direction === -1) {
+				direction = 1;
+			}
+			
+			currentIndex += direction;
+			retentionText.textContent = animationText.substring(0, currentIndex);
+			
+			if (isAnimating) {
+				setTimeout(animate, 100);
+			}
+		}
+		
+		animate();
+	}
+	
+	function stopAnimation() {
+		isAnimating = false;
+		retentionText.textContent = '保持期限変更';
+	}
+	
+	retentionText.addEventListener('click', function() {
+		if (isAnimating) {
+			stopAnimation();
+		} else {
+			startAnimation();
+		}
+	});
+})();
+</script>
+
+
+</body>
+</html>
