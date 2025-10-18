@@ -11,7 +11,10 @@
 	<!-- 上部の極細メニュー -->
 	<nav class="topnav">
 		<div class="topnav__inner">
-			<span class="brand"><img class="brand__img" src="gh_logo_new.png" alt="GigaFile" /></span>
+			<span class="brand">
+				<img class="brand__img" src="gh_logo_new.png" alt="GigaFile" />
+				<span class="brand__text">GigaFile便</span>
+			</span>
 			<span class="notice">YouTubeで【GiFiレコーズラジオ】配信中！</span>
 			<button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="メニューを開く">
 				<span class="hamburger"></span>
@@ -19,9 +22,6 @@
 				<span class="hamburger"></span>
 			</button>
 			<ul class="menu" id="main-menu">
-				<li class="menu-close">
-					<button class="close-btn" id="close-menu" aria-label="メニューを閉じる">×</button>
-				</li>
 				<li><a href="#">ホーム</a></li>
 				<li><a href="#">お知らせ</a></li>
 				<li><a href="#">ギガファイルとは</a></li>
@@ -202,27 +202,29 @@
 	(function() {
 		var toggle = document.getElementById('mobile-menu-toggle');
 		var menu = document.getElementById('main-menu');
-		var closeBtn = document.getElementById('close-menu');
+		var body = document.body;
+		
+		function openMenu() {
+			if (toggle) toggle.classList.add('active');
+			if (menu) menu.classList.add('active');
+			if (body) body.classList.add('menu-open');
+		}
 		
 		function closeMenu() {
 			if (toggle) toggle.classList.remove('active');
 			if (menu) menu.classList.remove('active');
+			if (body) body.classList.remove('menu-open');
 		}
 		
 		if (toggle && menu) {
 			toggle.addEventListener('click', function(e) {
 				e.stopPropagation();
-				toggle.classList.toggle('active');
-				menu.classList.toggle('active');
-			});
-			
-			// Close button functionality
-			if (closeBtn) {
-				closeBtn.addEventListener('click', function(e) {
-					e.stopPropagation();
+				if (menu.classList.contains('active')) {
 					closeMenu();
-				});
-			}
+				} else {
+					openMenu();
+				}
+			});
 			
 			// Close menu when clicking on overlay (outside menu)
 			document.addEventListener('click', function(e) {
