@@ -236,10 +236,10 @@ body {
   }
   .brand { 
     position: absolute; 
-    left: 50%; 
+    left: 60%; 
     transform: translateX(-50%); 
     font-size: 25px; 
-    font-weight: 900; 
+    font-weight: bold; 
     color: #000; 
   }
   .brand__img { display: none; }
