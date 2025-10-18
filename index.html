@@ -13,8 +13,15 @@
 		<div class="topnav__inner">
 			<span class="brand"><img class="brand__img" src="gh_logo_new.png" alt="GigaFile" /></span>
 			<span class="notice">YouTubeで【GiFiレコーズラジオ】配信中！</span>
-			<a href="#" class="post-btn">✖ ポスト</a>
-			<ul class="menu">
+			<button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="メニューを開く">
+				<span class="hamburger"></span>
+				<span class="hamburger"></span>
+				<span class="hamburger"></span>
+			</button>
+			<ul class="menu" id="main-menu">
+				<li class="menu-close">
+					<button class="close-btn" id="close-menu" aria-label="メニューを閉じる">×</button>
+				</li>
 				<li><a href="#">ホーム</a></li>
 				<li><a href="#">お知らせ</a></li>
 				<li><a href="#">ギガファイルとは</a></li>
@@ -156,11 +163,11 @@
 			<ul class="news__list">
 				<li>
 					<span class="news__date">2025/08/15</span>
-					<a href="#" class="news__link">【知りたくなったら、ここに来い】新サービス開始</a>
+					<a href="https://news.gigafile.nu/?p=3343" class="news__link">【知りたくなったら、ここに来い】新サービス開始</a>
 				</li>
 				<li>
 					<span class="news__date">2025/08/03</span>
-					<a href="#" class="news__link">輝きたいきもち は、 まだここにある</a>
+					<a href="https://news.gigafile.nu/?p=3340" class="news__link">輝きたいきもち は、 まだここにある</a>
 				</li>
 			</ul>
 		</section>
@@ -191,6 +198,54 @@
 	</main>
 
 	<script>
+	// Mobile menu toggle functionality
+	(function() {
+		var toggle = document.getElementById('mobile-menu-toggle');
+		var menu = document.getElementById('main-menu');
+		var closeBtn = document.getElementById('close-menu');
+		
+		function closeMenu() {
+			if (toggle) toggle.classList.remove('active');
+			if (menu) menu.classList.remove('active');
+		}
+		
+		if (toggle && menu) {
+			toggle.addEventListener('click', function(e) {
+				e.stopPropagation();
+				toggle.classList.toggle('active');
+				menu.classList.toggle('active');
+			});
+			
+			// Close button functionality
+			if (closeBtn) {
+				closeBtn.addEventListener('click', function(e) {
+					e.stopPropagation();
+					closeMenu();
+				});
+			}
+			
+			// Close menu when clicking on overlay (outside menu)
+			document.addEventListener('click', function(e) {
+				if (menu.classList.contains('active') && !menu.contains(e.target) && !toggle.contains(e.target)) {
+					closeMenu();
+				}
+			});
+			
+			// Close menu when clicking on menu items
+			var menuItems = menu.querySelectorAll('a');
+			menuItems.forEach(function(item) {
+				item.addEventListener('click', function() {
+					closeMenu();
+				});
+			});
+			
+			// Prevent menu clicks from closing menu
+			menu.addEventListener('click', function(e) {
+				e.stopPropagation();
+			});
+		}
+	})();
+
 	// Ad in the 200px gap (clickable banner) with rotation on close
 	(function() {
 		var slot = document.getElementById('gap-ad');
